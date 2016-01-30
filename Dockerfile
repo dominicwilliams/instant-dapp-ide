@@ -48,10 +48,22 @@ RUN sed -i '/PasswordAuthentication yes/c\PasswordAuthentication no' /etc/ssh/ss
 RUN mkdir /var/run/sshd
 RUN mkdir /root/.ssh
 
-# Expose ports for Dapp/Web, Dapp/RPC, SSH
-EXPOSE 8080
-EXPOSE 8545
-EXPOSE 2222
+# Additionally add Cloud9 pair programming environment
+WORKDIR /opt
+RUN git clone git://github.com/c9/core.git cloud9
+WORKDIR /opt/cloud9
+RUN scripts/install-sdk.sh
+# patch for solidty syntax
+ADD patches/c9/node_modules/ace/lib/ace/ext/modelist.js /opt/cloud9/node_modules/ace/lib/ace/ext/modelist.js
+ADD patches/c9/node_modules/ace/lib/ace/mode/solidity.js /opt/cloud9/node_modules/ace/lib/ace/mode/solidity.js
+ADD patches/c9/node_modules/ace/lib/ace/mode/solidity_highlight_rules.js /opt/cloud9/node_modules/ace/lib/ace/mode/solidity_highlight_rules.js
+ADD patches/c9/node_modules/ace/lib/ace/snippets/solidity.js /opt/cloud9/node_modules/ace/lib/ace/snippets/solidity.js
+# make C9 server runnable (user needs to run $ c9.sh to launch platform)
+RUN mkdir /opt/cloud9/workspace
+WORKDIR /opt/cloud9/workspace
+RUN ln -s /src src
+RUN echo 'cd /opt/cloud9;node server.js --collab -p 8181  --listen 0.0.0.0 -a : -w /opt/cloud9/workspace' > /usr/local/bin/c9.sh
+RUN chmod ugo+x /usr/local/bin/c9.sh
 
 # Create an instructive welcome message
 RUN apt-get install -y figlet
@@ -87,12 +99,15 @@ RUN echo 'echo "\n\
  -- Tmux cheat sheet: https://gist.github.com/MohamedAlaa/2961058\n\
  -- Manual, docs etc: https://tmux.github.io/\n\
  -- QUICK START!\n\
- ---- $ tmux a -t pair     // named session pair programmers can join\n\
+ ---- $ tmux new -s pair   // named session pair programmers can join\n\
  ---- ctrl B c             // create new shell window\n\
  ---- ctrl B <number>      // select window\n\
  \n\
  Enjoy! Ping me with feature requests via https://twitter.com/dominic_w\n\
 "' >> /root/.bashrc
+
+# Clean up APT when done.
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # On entry, start sshd, run system loggger, copy pair programming keys into authorized keys, and run bash
 ENTRYPOINT service ssh start && rsyslogd && cp /root/.import/authorized_keys /root/.ssh/ && bash
