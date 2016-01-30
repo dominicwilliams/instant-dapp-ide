@@ -14,7 +14,7 @@ INSTRUCTIONS
     |___|_| |_|___/\__\__,_|_| |_|\__| |____/ \__,_| .__/| .__/  |___|____/|_____|
                                                    |_|   |_|                      
     
-     Build 16-01-28.1
+     Build 29-01-28.1
      
      *** TRUFFLE ***
      -- Dapp and contract development environment, testing framework and asset pipeline
