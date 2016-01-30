@@ -1,2 +1,2 @@
-authorized_keys
-.Dockerfile.swp
+**/authorized_keys
+**/.Dockerfile.swp
