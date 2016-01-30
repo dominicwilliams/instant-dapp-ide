@@ -3,9 +3,10 @@ Complete Dapp and Solidity development environment as docker image you can run f
 
 INSTRUCTIONS  
 &nbsp;  
-1) Install Docker & open terminal (use special Docker terminal on Mac), then simply...  
-2) $ fwd-localhost-to-instance.sh &  
-3) $ docker run -v <your-code-folder>:/src -i -p 8080:8080 -p 8545:8545 -t dominicwilliams/instant-dapp-ide:latest
+1) Install Docker & open terminal (use special Docker terminal on Mac), then...  
+2) If you want to do pair programming, place keys of pairs into ssh/authorized_keys
+3) $ fwd-localhost-to-instance.sh  
+4) $ run-instance.sh
 
      ___           _              _     ____                      ___ ____  _____ 
     |_ _|_ __  ___| |_ __ _ _ __ | |_  |  _ \  __ _ _ __  _ __   |_ _|  _ \| ____|
