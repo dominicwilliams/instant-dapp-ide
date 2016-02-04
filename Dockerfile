@@ -32,8 +32,6 @@ RUN git clone https://github.com/dominicwilliams/truffle.git
 WORKDIR /tmp/truffle
 RUN npm install -g .
 
-RUN npm install -y -g truffle
-
 # Install tmux to gain split screen management and screen sharing capabilities
 RUN apt-get install -y tmux
 
