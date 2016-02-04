@@ -7,6 +7,7 @@ RUN apt-get update
 RUN apt-get upgrade -q -y
 RUN apt-get dist-upgrade -q -y
 
+RUN apt-get install -y figlet
 RUN apt-get install -y strace
 RUN apt-get install -y curl
 RUN apt-get install -y vim
@@ -18,24 +19,10 @@ RUN apt-get install -y python
 RUN apt-get install -y python-pip
 RUN apt-get install -y python-dev
 RUN apt-get install -y libssl-dev
-
-# Install testrpc and Truffle directly from github as PIP and NPM not regularly
-# updated (e.g. make sure we have latest version solc)
-# testrpc
-WORKDIR /tmp
-RUN git clone https://github.com/Consensys/testrpc
-WORKDIR /tmp/testrpc
-RUN pip install -r requirements.txt
-# Truffle
-WORKDIR /tmp
-RUN git clone https://github.com/dominicwilliams/truffle.git
-WORKDIR /tmp/truffle
-RUN npm install -g .
+RUN apt-get install -y rake
 
 # Install tmux to gain split screen management and screen sharing capabilities
 RUN apt-get install -y tmux
-
-RUN apt-get install -y rake
 
 # Pimp VIM with Nerd Tree and other goodies using the Braintree setup
 WORKDIR /root
@@ -59,7 +46,7 @@ RUN sed -i '/PasswordAuthentication yes/c\PasswordAuthentication no' /etc/ssh/ss
 RUN mkdir /var/run/sshd
 RUN mkdir /root/.ssh
 
-# Additionally add Cloud9 pair programming environment
+# Add Cloud9 for pair programming & IDE, in addition to tmux
 WORKDIR /opt
 RUN git clone git://github.com/c9/core.git cloud9
 WORKDIR /opt/cloud9
@@ -76,9 +63,21 @@ RUN ln -s /src src
 RUN echo 'cd /opt/cloud9;node server.js --collab -p 8181  --listen 0.0.0.0 -a : -w /opt/cloud9/workspace' > /usr/local/bin/c9.sh
 RUN chmod ugo+x /usr/local/bin/c9.sh
 
-# Create an instructive welcome message
-RUN apt-get install -y figlet
+# Install testrpc and Truffle directly from github as PIP and NPM not regularly
+# updated (e.g. make sure we have latest version solc)
+# testrpc
+RUN pip install eth-testrpc
+# WORKDIR /tmp
+# RUN git clone https://github.com/Consensys/testrpc
+# WORKDIR /tmp/testrpc
+# RUN pip install -r requirements.txt
+# Truffle
+WORKDIR /tmp
+RUN git clone https://github.com/dominicwilliams/truffle.git
+WORKDIR /tmp/truffle
+RUN npm install -g .
 
+# Create an instructive welcome message
 RUN echo 'figlet Instant Dapp IDE' >> /root/.bashrc
 RUN echo 'echo "\n\
  Build 16-01-28.1\n\
