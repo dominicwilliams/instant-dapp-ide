@@ -7,6 +7,7 @@ RUN apt-get update
 RUN apt-get upgrade -q -y
 RUN apt-get dist-upgrade -q -y
 
+RUN apt-get install -y strace
 RUN apt-get install -y curl
 RUN apt-get install -y vim
 RUN apt-get install -y git
@@ -18,7 +19,19 @@ RUN apt-get install -y python-pip
 RUN apt-get install -y python-dev
 RUN apt-get install -y libssl-dev
 
-RUN pip install eth-testrpc
+# Install testrpc and Truffle directly from github as PIP and NPM not regularly
+# updated (e.g. make sure we have latest version solc)
+# testrpc
+WORKDIR /tmp
+RUN git clone https://github.com/Consensys/testrpc
+WORKDIR /tmp/testrpc
+RUN pip install -r requirements.txt
+# Truffle
+WORKDIR /tmp
+RUN git clone https://github.com/ConsenSys/truffle.git
+WORKDIR /tmp/truffle
+RUN npm install -g .
+
 RUN npm install -y -g truffle
 
 # Install tmux to gain split screen management and screen sharing capabilities
