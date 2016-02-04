@@ -28,7 +28,7 @@ WORKDIR /tmp/testrpc
 RUN pip install -r requirements.txt
 # Truffle
 WORKDIR /tmp
-RUN git clone https://github.com/ConsenSys/truffle.git
+RUN git clone https://github.com/dominicwilliams/truffle.git
 WORKDIR /tmp/truffle
 RUN npm install -g .
 
