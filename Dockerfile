@@ -72,6 +72,11 @@ RUN pip install eth-testrpc
 # WORKDIR /tmp/testrpc
 # RUN pip install -r requirements.txt
 # Truffle
+# WORKDIR /tmp
+# RUN git clone https://github.com/ConsenSys/truffle-default-builder.git
+# WORKDIR /tmp/truffle-default-builder
+# RUN npm install -g .
+RUN echo "cache buster 4242342342 // recompiling from here!!"
 WORKDIR /tmp
 RUN git clone https://github.com/dominicwilliams/truffle.git
 WORKDIR /tmp/truffle
