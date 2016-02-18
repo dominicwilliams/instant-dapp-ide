@@ -72,20 +72,20 @@ RUN pip install eth-testrpc
 # WORKDIR /tmp/testrpc
 # RUN pip install -r requirements.txt
 # Truffle
-# WORKDIR /tmp
-# RUN git clone https://github.com/ConsenSys/truffle-default-builder.git
-# WORKDIR /tmp/truffle-default-builder
-# RUN npm install -g .
-RUN echo "cache buster 4242342342 // recompiling from here!!"
 WORKDIR /tmp
-RUN git clone https://github.com/dominicwilliams/truffle.git
+RUN git clone https://github.com/ConsenSys/truffle-default-builder.git
+WORKDIR /tmp/truffle-default-builder
+RUN npm install -g .
+RUN echo "Rebuilding from here: cache bust 32432"
+WORKDIR /tmp
+RUN git clone https://github.com/ConsenSys/truffle.git
 WORKDIR /tmp/truffle
 RUN npm install -g .
 
 # Create an instructive welcome message
 RUN echo 'figlet Instant Dapp IDE' >> /root/.bashrc
 RUN echo 'echo "\n\
- Build 16-01-28.1\n\
+ Build 16-02-17.1\n\
  \n\
  *** TRUFFLE ***\n\
  -- Dapp and contract development environment, testing framework and asset pipeline\n\
