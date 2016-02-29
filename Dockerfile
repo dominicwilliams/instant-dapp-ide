@@ -66,17 +66,18 @@ RUN chmod ugo+x /usr/local/bin/c9.sh
 # Install testrpc and Truffle directly from github as PIP and NPM not regularly
 # updated (e.g. make sure we have latest version solc)
 # testrpc
-RUN pip install eth-testrpc
-# WORKDIR /tmp
-# RUN git clone https://github.com/Consensys/testrpc
-# WORKDIR /tmp/testrpc
-# RUN pip install -r requirements.txt
+# RUN pip install eth-testrpc
+# npm install -g ethereumjs-testrpc
+WORKDIR /tmp
+RUN git clone https://github.com/ethereumjs/testrpc.git
+WORKDIR /tmp/testrpc
+RUN npm install -g .
 # Truffle
 WORKDIR /tmp
 RUN git clone https://github.com/ConsenSys/truffle-default-builder.git
 WORKDIR /tmp/truffle-default-builder
 RUN npm install -g .
-RUN echo "Rebuilding from here: cache bust 32432"
+RUN echo "Rebuilding from here: cache bust 32432e34r"
 WORKDIR /tmp
 RUN git clone https://github.com/ConsenSys/truffle.git
 WORKDIR /tmp/truffle
@@ -91,8 +92,8 @@ RUN echo 'echo "\n\
  -- Dapp and contract development environment, testing framework and asset pipeline\n\
  -- Solidity language docs: http://solidity.readthedocs.org/en/latest\n\
  -- Truffle docs: https://github.com/ConsenSys/truffle\n\
- -- eth-testrpc included so tests run on a simulated blockchain\n\
- ---- $ /usr/local/bin/testrpc -d 0.0.0.0\n\
+ -- ethereumjs-testrpc included so tests run on a simulated blockchain\n\
+ ---- $ /usr/bin/testrpc\n\
  -- QUICK START!\n\
  ---- $ mkdir my-new-project\n\
  ---- $ cd my-new-project\n\

@@ -21,8 +21,8 @@ INSTRUCTIONS
      -- Dapp and contract development environment, testing framework and asset pipeline
      -- Solidity language docs: http://solidity.readthedocs.org/en/latest
      -- Truffle docs: https://github.com/ConsenSys/truffle
-     -- eth-testrpc included so tests run on a simulated blockchain
-     ---- $ /usr/local/bin/testrpc -d 0.0.0.0
+     -- ehereumjs-testrpc included so tests run on a simulated blockchain
+     ---- $ /usr/bin/testrpc
      -- QUICK START!
      ---- $ mkdir my-new-project
      ---- $ cd my-new-project
