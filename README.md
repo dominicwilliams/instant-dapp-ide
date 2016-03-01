@@ -6,9 +6,9 @@ INSTRUCTIONS
 1) Install Docker & open Docker terminal (on Mac)  
 2) By default, the image mounts ~/src into /src. Edit run-image.sh to change this.  
 THEN  
-3) $ setup-port-fowarding.sh    # in a separate terminal as outputs connection status  
-4) $ pull-latest-image.sh       # pulls latest image from Docker so building not necessary  
-5) $ run-image.sh               # runs the Docker image...  
+3) $ setup-port-fowarding.sh    *# in a separate terminal as outputs connection status*  
+4) $ pull-latest-image.sh       *# pulls latest image from Docker so building not necessary*  
+5) $ run-image.sh               *# runs the Docker image...*  
 
      ___           _              _     ____                      ___ ____  _____   
     |_ _|_ __  ___| |_ __ _ _ __ | |_  |  _ \  __ _ _ __  _ __   |_ _|  _ \| ____|  
