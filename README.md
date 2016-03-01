@@ -1,6 +1,6 @@
 # instant-dapp-ide
 A complete Dapp and Solidity development system packaged as docker image you can  
-run from command line.  
+run from the command line.  
   
 INSTRUCTIONS: first install Docker, if you do not already have it. You can then
 follow the steps below.  
