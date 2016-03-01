@@ -1,15 +1,18 @@
 # instant-dapp-ide
-Complete Dapp and Solidity development environment as docker image you can run from command line
-
-INSTRUCTIONS  
-&nbsp;  
-1) Install Docker & open Docker terminal (on Mac)  
-2) By default, the image mounts ~/src into /src. Edit run-image.sh to change this.  
-THEN  
-3) $ setup-port-fowarding.sh    *# in a separate terminal as outputs connection status*  
-4) $ pull-latest-image.sh       *# pulls latest image from Docker so building not necessary*  
-5) $ run-image.sh               *# runs the Docker image...*  
-
+A complete Dapp and Solidity development system packaged as docker image you can  
+run from command line.  
+  
+First install Docker, if you do not already have it. If you are happy using ~/src  
+as your Dapp projec folder, you are ready, otherwise edit /run/run-image.sh and  
+specify a different folder.  
+  
+1. Open a terminal and forward ports to your Docker instance  
+$ setup-port-fowarding.sh  
+  
+2. Open a special Docker terminal (on Mac)  
+$ pull-latest-image.sh  
+$ run-image.sh  
+  
      ___           _              _     ____                      ___ ____  _____   
     |_ _|_ __  ___| |_ __ _ _ __ | |_  |  _ \  __ _ _ __  _ __   |_ _|  _ \| ____|  
      | || '_ \/ __| __/ _` | '_ \| __| | | | |/ _` | '_ \| '_ \   | || | | |  _|  
