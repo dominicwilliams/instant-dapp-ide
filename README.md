@@ -1,6 +1,6 @@
 # instant-dapp-ide
-A complete Ethereum Dapp development system packaged as Docker image you can  
-run from the command line in minutes.    
+A complete Ethereum Dapp development system packaged as Docker image: get up 
+and running with a professional environment in minutes!!!
   
 INSTRUCTIONS: install Docker then follow the steps below.  
   
