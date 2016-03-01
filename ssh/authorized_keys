@@ -1,2 +1,0 @@
-# Enter keys of pair/multi programmers. These will be copied into /root/.ssh/authorized_keys by the
-# docker instance when it runs and allow your pairs to join you.

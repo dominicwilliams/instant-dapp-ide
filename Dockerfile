@@ -65,12 +65,11 @@ RUN chmod ugo+x /usr/local/bin/c9.sh
 
 # Install testrpc and Truffle directly from github as PIP and NPM not regularly
 # updated (e.g. make sure we have latest version solc)
-# testrpc
-RUN pip install eth-testrpc
-# WORKDIR /tmp
-# RUN git clone https://github.com/Consensys/testrpc
-# WORKDIR /tmp/testrpc
-# RUN pip install -r requirements.txt
+# ethereumjs-testrpc
+WORKDIR /tmp
+RUN git clone https://github.com/ethereumjs/testrpc.git
+WORKDIR /tmp/testrpc
+RUN npm install -g .
 # Truffle
 WORKDIR /tmp
 RUN git clone https://github.com/ConsenSys/truffle-default-builder.git
@@ -85,38 +84,37 @@ RUN npm install -g .
 # Create an instructive welcome message
 RUN echo 'figlet Instant Dapp IDE' >> /root/.bashrc
 RUN echo 'echo "\n\
- Build 16-02-17.1\n\
+ Build 2016-02-29.1\n\
  \n\
- *** TRUFFLE ***\n\
- -- Dapp and contract development environment, testing framework and asset pipeline\n\
- -- Solidity language docs: http://solidity.readthedocs.org/en/latest\n\
- -- Truffle docs: https://github.com/ConsenSys/truffle\n\
- -- eth-testrpc included so tests run on a simulated blockchain\n\
- ---- $ /usr/local/bin/testrpc -d 0.0.0.0\n\
- -- QUICK START!\n\
- ---- $ mkdir my-new-project\n\
- ---- $ cd my-new-project\n\
- ---- $ truffle init\n\
- ---- $ truffle test\n\
- ---- $ truffle serve\n\
- ---- Open Web browser http://localhost:8080/ (port forwarding must be running)\n\
+ GET STARTED\n\
+ $ tmux new -s pair       # create session 0...\n\
+ $ testrpc -d 0.0.0.0     # launch dummy blockchain for dev/testing\n\
+ $ ctrl-b c               # create session 1...\n\
+ $ c9.sh                  # launch Cloud9 IDE http://localhost:8181/\n\
+ $ ctrl-b c               # create session 2...\n\
+ $ cd /src                # enter mounted external source folder\n\
+ $ mkdir new-proj         # create new project folder\n\
+ $ cd new-proj            # enter project folder\n\
+ $ truffle init           # initialize bare bones project\n\
+ $ truffle test           # run project'"'s"' unit tests\n\
+ $ truffle build          # build the whole dapp (inc. html, js...)\n\
+ $ truffle deploy         # stick compiled contracts on testrpc chain\n\
+ $ ctrl-b c               # create session 3...\n\
+ $ truffle serve          # serve dapp & test http://localhost:8080\n\
+ $ ctrl-b 2               # return session 2 & continue with truffle\n\
  \n\
- *** VIM ***\n\
- -- Editor preconfigured with Solidity syntax highlighters, Nerdtree etc\n\
- -- Vim cheat sheet: http://vim.rtorr.com/\n\
- -- QUICK START!\n\
- ---- $ vim\n\
- ---- \\nt                  // open nerdtree'"'s"' file browser\n\
- ---- ctrl W <arrow-key>   // move cursor to desired window/pane\n\
+ TIPS\n\
+ -- Share your Cloud9 url with collaborators (via external IP)\n\
+ ---- Cloud9 supports real time shared editing of code\n\
+ -- If you prefer using the terminal we have installed VIM\n\
+ ---- Ready pimped with NerdTree and Solidity support\n\
+ -- SSH server is installed for sharing the command line\n\
+ ---- Pairs join tmux sessions using $ tmux a -t pair\n\
  \n\
- *** TMUX ***\n\
- -- Keep multiple shell sessions open in split screen\n\
- -- Tmux cheat sheet: https://gist.github.com/MohamedAlaa/2961058\n\
- -- Manual, docs etc: https://tmux.github.io/\n\
- -- QUICK START!\n\
- ---- $ tmux new -s pair   // named session pair programmers can join\n\
- ---- ctrl B c             // create new shell window\n\
- ---- ctrl B <number>      // select window\n\
+ DOCS\n\
+ -- https://media.readthedocs.org/pdf/solidity/latest/solidity.pdf\n\
+ -- https://github.com/ConsenSys/truffle\n\
+ -- https://gist.github.com/MohamedAlaa/2961058 [tmux]\n\
  \n\
  Enjoy! Ping me with feature requests via https://twitter.com/dominic_w\n\
 "' >> /root/.bashrc
