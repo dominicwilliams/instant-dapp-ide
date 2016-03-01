@@ -4,7 +4,7 @@ Complete Dapp and Solidity development environment as docker image you can run f
 INSTRUCTIONS  
 &nbsp;  
 1) Install Docker & open Docker terminal (on Mac)  
-2) Use ~/src as your Dapp project folder or edit run-image.sh  
+2) By default, the image mounts ~/src into /src. Edit run-image.sh to change this.  
 Then when you're ready...  
 3) $ setup-port-fowarding.sh  
 4) $ pull-latest-image.sh  
