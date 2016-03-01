@@ -2,8 +2,7 @@
 A complete Ethereum Dapp development system packaged as Docker image you can  
 run from the command line in minutes.    
   
-INSTRUCTIONS: first install Docker, if you do not already have it. You can then
-follow the steps below.  
+INSTRUCTIONS: install Docker then follow the steps below.  
   
 NOTE: Our run script will map your ~/src folder into the running image as your  
 Dapp folder. Make sure this folder exists, or edit the run script to use a  
