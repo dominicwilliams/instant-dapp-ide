@@ -84,24 +84,26 @@ RUN npm install -g .
 # Create an instructive welcome message
 RUN echo 'figlet Instant Dapp IDE' >> /root/.bashrc
 RUN echo 'echo "\n\
- Build 2016-02-29.1\n\
+ Build 2016-02-29.2\n\
+ \n\
+ NOTE: tmux is used to maintain concurrent windows. In window 0 we are running\n\
+ testrpc, which is a dummy blockchain for testing and development. In window 1\n\
+ we are running c9.sh, which makes the Cloud9 IDE available in a Web browser on\n\
+ http://localhost:8181. You are in window 2, which is a great place to manage\n\
+ your Dapp. Note you can create a new window using ctrl-b c, and you can\n\
+ navigate to an existing window using ctrl-b <window>.\n\
  \n\
  GET STARTED\n\
- $ tmux new -s pair       # create session 0...\n\
- $ testrpc -d 0.0.0.0     # launch dummy blockchain for dev/testing\n\
- $ ctrl-b c               # create session 1...\n\
- $ c9.sh                  # launch Cloud9 IDE http://localhost:8181/\n\
- $ ctrl-b c               # create session 2...\n\
- $ cd /src                # enter mounted external source folder\n\
- $ mkdir new-proj         # create new project folder\n\
- $ cd new-proj            # enter project folder\n\
- $ truffle init           # initialize bare bones project\n\
+ $ cd /src                # make external source code folder current directory\n\
+ $ mkdir new-proj         # create a new project folder\n\
+ $ cd new-proj            # make project folder current directory\n\
+ $ truffle init           # initialize a bare bones project!!!\n\
  $ truffle test           # run project'"'s"' unit tests\n\
- $ truffle build          # build the whole dapp (inc. html, js...)\n\
- $ truffle deploy         # stick compiled contracts on testrpc chain\n\
- $ ctrl-b c               # create session 3...\n\
- $ truffle serve          # serve dapp & test http://localhost:8080\n\
- $ ctrl-b 2               # return session 2 & continue with truffle\n\
+ $ truffle build          # build the whole Dapp (inc. html, js...)\n\
+ $ truffle deploy         # deploy compiled contracts to testrpc chain\n\
+ $ ctrl-b c               # create window 3...\n\
+ $ truffle serve          # serve Dapp for testing on http://localhost:8080\n\
+ $ ctrl-b 2               # return window 2\n\
  \n\
  TIPS\n\
  -- Share your Cloud9 url with collaborators (via external IP)\n\
@@ -123,7 +125,7 @@ RUN echo 'echo "\n\
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # On entry, start sshd, run system loggger, copy pair programming keys into authorized keys, and run bash
-ENTRYPOINT service ssh start && rsyslogd && cp /root/.import/authorized_keys /root/.ssh/ && bash
+ENTRYPOINT service ssh start && rsyslogd && cp /root/.import/authorized_keys /root/.ssh/ && tmux new -s pair 'testrpc -d 0.0.0.0' \; new-window 'c9.sh' \; new-window 
 
 # Start user in their source code directory...
 WORKDIR /src

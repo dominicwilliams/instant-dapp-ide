@@ -17,22 +17,24 @@ INSTRUCTIONS
     
      Build 2016-02-29.1
 
+     NOTE: tmux is used to maintain concurrent windows. In window 0 we are running
+     testrpc, which is a dummy blockchain for testing and development. In window 1
+     we are running c9.sh, which makes the Cloud9 IDE available in a Web browser
+     on http://localhost:8181. You are in window 2, which is a great place to
+     manage your Dapp. Note you can create a new window using ctrl-b c, and you
+     can navigate to an existing window using ctrl-b <window>.
+
      GET STARTED
-     $ tmux new -s pair       # create session 0...
-     $ testrpc -d 0.0.0.0     # launch dummy blockchain for dev/testing
-     $ ctrl-b c               # create session 1...
-     $ c9.sh                  # launch Cloud9 IDE http://localhost:8181/
-     $ ctrl-b c               # create session 2...
-     $ cd /src                # enter mounted external source folder
+     $ cd /src                # make external source code folder current directory
      $ mkdir new-proj         # create new project folder
-     $ cd new-proj            # enter project folder
-     $ truffle init           # initialize bare bones project
-     $ truffle test           # run project's unit tests!!!
+     $ cd new-proj            # make project folder current directory
+     $ truffle init           # initialize a bare bones project!!!
+     $ truffle test           # run project's unit tests
      $ truffle build          # build the whole dapp (inc. html, js...)
      $ truffle deploy         # stick compiled contracts on testrpc chain
-     $ ctrl-b c               # create session 3...
-     $ truffle serve          # serve dapp & test http://localhost:8080
-     $ ctrl-b 2               # return session 2 & continue with truffle
+     $ ctrl-b c               # create window 3...
+     $ truffle serve          # serve Dapp for testing on http://localhost:8080
+     $ ctrl-b 2               # return window 2
 
      TIPS
      -- Share your Cloud9 url with collaborators (via external IP)
