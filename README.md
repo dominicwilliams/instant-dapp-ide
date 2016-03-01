@@ -3,10 +3,10 @@ Complete Dapp and Solidity development environment as docker image you can run f
 
 INSTRUCTIONS  
 &nbsp;  
-1) Install Docker & open Docker terminal (on Mac) then...
-2) $ fwd-localhost-to-instance.sh  
-3) $ pull-latest-image.sh
-4) $ run-instance.sh  
+1) Install Docker & open Docker terminal (on Mac) then...  
+2) $ setup-port-fowarding.sh  
+3) $ pull-latest-image.sh  
+4) $ run-image.sh  
 
      ___           _              _     ____                      ___ ____  _____   
     |_ _|_ __  ___| |_ __ _ _ __ | |_  |  _ \  __ _ _ __  _ __   |_ _|  _ \| ____|  
