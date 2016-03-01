@@ -1,0 +1,2 @@
+# Enter keys of pair programmers you wish to connect to your instance
+# When you run an instance, docker will copy these into /root/.ssh/authorized_keys
