@@ -1,5 +1,12 @@
 SRC=~/src
 KEYS=`pwd`"/ssh"
+if [ -f $KEYS/authorized_keys ]
+then
+	echo "$KEYS/authorized_keys found..."
+else
+	echo "Creating $KEYS/authorized_keys..."
+	cp $KEYS/authorized_keys.example $KEYS/authorized_keys
+fi
 MSG="\n\
 1. Setup file mappings: \n\
  Source code: $SRC to /src \n\
