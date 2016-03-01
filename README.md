@@ -2,9 +2,10 @@
 A complete Dapp and Solidity development system packaged as docker image you can  
 run from command line.  
   
-INSTRUCTIONS: install Docker, if you do not already have it. By default it will
-try to map ~/src into /src as your Dapp project folder. If you wish to use a
-different folder edit the startup script /run/run-image.sh...
+INSTRUCTIONS: first install Docker, if you do not already have it. You can then
+follow the steps below. Note that the run script will try to map ~/src into the
+running image as your Dapp project folder. If you wish to use a different folder
+simply edit /run/run-image.sh
   
 1. Open a terminal and forward ports to your Docker instance  
 $ setup-port-fowarding.sh  
