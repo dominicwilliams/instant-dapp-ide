@@ -9,11 +9,11 @@ Dapp folder. Make sure this folder exists, or edit the run script to use a
 different folder.  
   
 1. Open a terminal and forward ports to your Docker instance  
-$ setup-port-fowarding.sh  
+$ ./setup-port-fowarding.sh  
   
 2. Open a special Docker terminal (on Mac)  
-$ pull-latest-image.sh  
-$ run-image.sh  
+$ ./pull-latest-image.sh  
+$ ./run-image.sh  
 ```
    ___           _              _     ____                      ___ ____  _____   
   |_ _|_ __  ___| |_ __ _ _ __ | |_  |  _ \  __ _ _ __  _ __   |_ _|  _ \| ____|  
