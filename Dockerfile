@@ -3,6 +3,8 @@ MAINTAINER dominicwilliams
 
 ENV DEBIAN_FRONTEND noninteractive
 
+RUN echo "Rebuilding from here: cache bust 23u42324"
+
 RUN apt-get update
 RUN apt-get upgrade -q -y
 RUN apt-get dist-upgrade -q -y
@@ -30,6 +32,12 @@ RUN git clone https://github.com/braintreeps/vim_dotfiles.git
 WORKDIR /root/vim_dotfiles
 RUN rake
 
+# Add TypeScrupt support too
+RUN echo "Plug 'leafgarland/typescript-vim'" >> /root/.vimrc.bundles.local
+WORKDIR /root/.vim/plugged
+RUN git clone https://github.com/leafgarland/typescript-vim.git typescript-vim
+
+# Make sure we are using 
 RUN echo 'set encoding=utf-8' >> /root/.vimrc
 
 # Configure VIM with support for Solidity
