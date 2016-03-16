@@ -2,6 +2,8 @@ socat TCP-LISTEN:8545,fork TCP:`docker-machine ip default`:8545 &
 socat TCP-LISTEN:8080,fork TCP:`docker-machine ip default`:8080 &
 socat TCP-LISTEN:8181,fork TCP:`docker-machine ip default`:8181 &
 socat TCP-LISTEN:2222,fork TCP:`docker-machine ip default`:2222 &
+socat TCP-LISTEN:3000,fork TCP:`docker-machine ip default`:3000 &
+socat TCP-LISTEN:3001,fork TCP:`docker-machine ip default`:3001 &
 
 MSG="\n\
 Forwarded localhost(2222, 8080, 8181, 8045) --> "`docker-machine ip default`"(22/SSH, 8080/Web, 8181/C9, 8045/RPC) \n\
