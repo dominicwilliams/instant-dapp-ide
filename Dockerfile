@@ -3,7 +3,7 @@ MAINTAINER dominicwilliams
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN echo "Rebuilding from here: cache bust 23u42324"
+RUN echo "Modify the silly string to rebuild from here w/o the cache alsdjajdasd"
 
 RUN apt-get update
 RUN apt-get upgrade -q -y
@@ -15,7 +15,7 @@ RUN apt-get install -y curl
 RUN apt-get install -y vim
 RUN apt-get install -y git
 
-RUN curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
 RUN apt-get install -y nodejs
 RUN apt-get install -y python
 RUN apt-get install -y python-pip
@@ -41,10 +41,11 @@ RUN git clone https://github.com/leafgarland/typescript-vim.git typescript-vim
 RUN echo 'set encoding=utf-8' >> /root/.vimrc
 
 # Configure VIM with support for Solidity
-WORKDIR /root/.vim
+WORKDIR /root
 RUN curl -o vim-solidity-master.zip https://codeload.github.com/tomlion/vim-solidity/zip/master
 RUN unzip vim-solidity-master.zip
-RUN mv vim-solidity-master/* .
+RUN rsync -a vim-solidity-master/ .vim/
+RUN rm -rf vim-solidity-master
 
 # Add an SSH server for social hacking i.e. pair/multi programming and configure run on port 2222
 RUN apt-get install -y openssh-server
@@ -83,7 +84,6 @@ WORKDIR /tmp
 RUN git clone https://github.com/ConsenSys/truffle-default-builder.git
 WORKDIR /tmp/truffle-default-builder
 RUN npm install -g .
-RUN echo "Rebuilding from here: cache bust 32432"
 WORKDIR /tmp
 RUN git clone https://github.com/ConsenSys/truffle.git
 WORKDIR /tmp/truffle
@@ -106,9 +106,10 @@ RUN echo 'echo "\n\
  $ mkdir new-proj         # create a new project folder\n\
  $ cd new-proj            # make project folder current directory\n\
  $ truffle init           # initialize a bare bones project!!!\n\
+ $ truffle compile        # compile project contracts\n\
  $ truffle test           # run project'"'s"' unit tests\n\
  $ truffle build          # build the whole Dapp (inc. html, js...)\n\
- $ truffle deploy         # deploy compiled contracts to testrpc chain\n\
+ $ truffle migrate        # migrate compiled contracts to e.g. testrpc chain\n\
  $ ctrl-b c               # create window 3...\n\
  $ truffle serve          # serve Dapp for testing on http://localhost:8080\n\
  $ ctrl-b 2               # return window 2\n\
