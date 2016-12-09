@@ -51,7 +51,6 @@ $ ./run-image.sh
  navigate to an existing window using ctrl-b <window>.
  
  SAMPLE BUILD PROCESS...
- $ cd /src                # make external source code folder current directory
  $ mkdir new-proj         # create a new project folder
  $ cd new-proj            # make project folder current directory
  $ truffle init           # initialize a bare bones project!!!

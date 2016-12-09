@@ -106,7 +106,6 @@ RUN echo 'echo "\n\
  navigate to an existing window using ctrl-b <window>.\n\
  \n\
  SAMPLE BUILD PROCESS...\n\
- $ cd /src                # make external source code folder current directory\n\
  $ mkdir new-proj         # create a new project folder\n\
  $ cd new-proj            # make project folder current directory\n\
  $ truffle init           # initialize a bare bones project!!!\n\
