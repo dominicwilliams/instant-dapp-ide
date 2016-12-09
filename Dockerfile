@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:xenial
 MAINTAINER dominicwilliams
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -9,6 +9,8 @@ RUN apt-get update
 RUN apt-get upgrade -q -y
 RUN apt-get dist-upgrade -q -y
 
+RUN apt-get install -y apt-utils
+RUN apt-get install -y sudo
 RUN apt-get install -y figlet
 RUN apt-get install -y strace
 RUN apt-get install -y curl
@@ -82,6 +84,7 @@ RUN npm install -g .
 # Truffle
 WORKDIR /tmp
 RUN git clone https://github.com/ConsenSys/truffle-default-builder.git
+RUN df -h
 WORKDIR /tmp/truffle-default-builder
 RUN npm install -g .
 WORKDIR /tmp
@@ -92,13 +95,13 @@ RUN npm install -g .
 # Create an instructive welcome message
 RUN echo 'figlet Instant Dapp IDE' >> /root/.bashrc
 RUN echo 'echo "\n\
- Build 2016-02-29.2\n\
+ Build 2016-12-08.1\n\
  \n\
  NOTE: tmux is used to maintain concurrent windows. In window 0 we are running\n\
  testrpc, which is a dummy blockchain for testing and development. In window 1\n\
  we are running c9.sh, which makes the Cloud9 IDE available in a Web browser on\n\
- http://localhost:8181. You are in window 2, which is a great place to manage\n\
- your Dapp. Note you can create a new window using ctrl-b c, and you can\n\
+ http://localhost:8181. You are in window 2, which is a great place to build\n\
+ a Dapp. Note you can create a new window using ctrl-b c, and you can\n\
  navigate to an existing window using ctrl-b <window>.\n\
  \n\
  GET STARTED\n\
@@ -115,16 +118,16 @@ RUN echo 'echo "\n\
  $ ctrl-b 2               # return window 2\n\
  \n\
  TIPS\n\
- -- Share your Cloud9 url with collaborators (via external IP)\n\
+ -- Share your Cloud9 url with collaborators on your external IP address\n\
  ---- Cloud9 supports real time shared editing of code\n\
  -- If you prefer using the terminal we have installed VIM\n\
  ---- Ready pimped with NerdTree and Solidity support\n\
- -- SSH server is installed for sharing the command line\n\
- ---- Pairs join tmux sessions using $ tmux a -t pair\n\
+ -- An SSH server makes it possible to share tmux session\n\
+ ---- Pair programmers join tmux sessions using $ tmux a -t pair\n\
  \n\
  DOCS\n\
- -- https://media.readthedocs.org/pdf/solidity/latest/solidity.pdf\n\
- -- https://github.com/ConsenSys/truffle\n\
+ -- http://truffleframework.com/ [Truffle]\n\
+ -- https://media.readthedocs.org/pdf/solidity/latest/solidity.pdf [Solidity]\n\
  -- https://gist.github.com/MohamedAlaa/2961058 [tmux]\n\
  \n\
  Enjoy! Ping me with feature requests via https://twitter.com/dominic_w\n\
@@ -133,8 +136,8 @@ RUN echo 'echo "\n\
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# On entry, start sshd, run system loggger, copy pair programming keys into authorized keys, and run bash
-ENTRYPOINT service ssh start && rsyslogd && cp /root/.import/authorized_keys /root/.ssh/ && tmux new -s pair 'testrpc -d 0.0.0.0' \; new-window 'c9.sh' \; new-window 
+# On entry, start sshd, copy pair programming keys into authorized keys, and run bash
+ENTRYPOINT service ssh start && cp /root/.import/authorized_keys /root/.ssh/ && tmux new -s pair 'testrpc -d 0.0.0.0' \; new-window 'c9.sh' \; new-window 
 
 # Start user in their source code directory...
 WORKDIR /src
