@@ -97,14 +97,15 @@ RUN echo 'figlet Instant Dapp IDE' >> /root/.bashrc
 RUN echo 'echo "\n\
  Build 2016-12-08.1\n\
  \n\
- NOTE: tmux is used to maintain concurrent windows. In window 0 we are running\n\
+ *** GET STARTED ***\n\
+ tmux is used to maintain concurrent windows. In window 0 we are running\n\
  testrpc, which is a dummy blockchain for testing and development. In window 1\n\
  we are running c9.sh, which makes the Cloud9 IDE available in a Web browser on\n\
  http://localhost:8181. You are in window 2, which is a great place to build\n\
  a Dapp. Note you can create a new window using ctrl-b c, and you can\n\
  navigate to an existing window using ctrl-b <window>.\n\
  \n\
- GET STARTED\n\
+ SAMPLE BUILD PROCESS...\n\
  $ cd /src                # make external source code folder current directory\n\
  $ mkdir new-proj         # create a new project folder\n\
  $ cd new-proj            # make project folder current directory\n\

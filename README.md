@@ -42,14 +42,15 @@ $ ./run-image.sh
 
  Build 2016-12-08.1
  
- NOTE: tmux is used to maintain concurrent windows. In window 0 we are running
+ *** GET STARTED ***
+ tmux is used to maintain concurrent windows. In window 0 we are running
  testrpc, which is a dummy blockchain for testing and development. In window 1
  we are running c9.sh, which makes the Cloud9 IDE available in a Web browser on
  http://localhost:8181. You are in window 2, which is a great place to build
- a Dapp. Note you can create a new window using ctrl-b c, and you can
+ a Dapp. Note you can create new windows using ctrl-b c, and you can
  navigate to an existing window using ctrl-b <window>.
  
- GET STARTED
+ SAMPLE BUILD PROCESS...
  $ cd /src                # make external source code folder current directory
  $ mkdir new-proj         # create a new project folder
  $ cd new-proj            # make project folder current directory
