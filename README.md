@@ -1,37 +1,33 @@
-# instant-dapp-ide
-Instant Dapp IDE is a complete development platform for creating Dapps that has
-been packaged into a docker image that just works!
+# Instant Dapp IDE
+Get up and running with a full professional Dapp development environment in minutes...
+* If you have Docker installed, simply clone the repo, then
+```
+./run-image.sh
+```
 
-The development environment is based around the Truffle Framework, which
-greatly simplifies Dapp development and deployment while providing full access
-to the powerful underlying technology (see http://truffleframework.com/docs/).
+* Environment incorporates best-of-breed Truffle Framework (see http://truffleframework.com/docs/)
 
-Once you have installed Docker, all you need to do is execute the run-image.sh
-script and the instant-dapp-ide image will be downloaded and run, whereupon
-you will be logged in and are ready to go!
+* Browser-based Cloud9 IDE with Solidity support on http://localhost:8181
 
-The system hosts a customized Cloud9 IDE on port 8181, and has fully prepared
-versions of VIM and other popular tools. 
+* Build, test, deploy and serve your Dapp from the command line
 
-You can easily pair program, either by sharing the URL of your Cloud9 IDE
-(simultaneous editing on files is possible, like on Google Docs), and the
-system hosts an SSHD server in case you would rather share the terminal.
+* Pair program with Cloud9, or SSH/tmux
 
-Days of configuration and setup disappear! :)
+* Your ~/src folder mapped inside image 
   
-INSTRUCTIONS 
-  
-NOTE: Your ~/src folder is mapped into the image as your workspace folder.
+TIPS 
 
-1. OPTIONAL: If you have an old Docker version on OS X, setup port forwarding
-   (plus open a special docker terminal to start the image)
+1. If you have an old Docker version on OS X, setup port forwarding
+```
 $ ./setup-port-fowarding-for-old-docker.sh  
+```
   
-2. OPTIONAL: Update to the latest version of instant-dapp-ide
+2. You can pull the latest version of the image from DockerHub
+```
 $ ./pull-latest-image.sh  
+```
 
-3. Run the platform...
-$ ./run-image.sh  
+** 
 ```
  ___           _              _     ____                      ___ ____  _____ 
 |_ _|_ __  ___| |_ __ _ _ __ | |_  |  _ \  __ _ _ __  _ __   |_ _|  _ \| ____|
