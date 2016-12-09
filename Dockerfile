@@ -113,9 +113,7 @@ RUN echo 'echo "\n\
  $ truffle test           # run project'"'s"' unit tests\n\
  $ truffle build          # build the whole Dapp (inc. html, js...)\n\
  $ truffle migrate        # migrate compiled contracts to e.g. testrpc chain\n\
- $ ctrl-b c               # create window 3...\n\
  $ truffle serve          # serve Dapp for testing on http://localhost:8080\n\
- $ ctrl-b 2               # return window 2\n\
  \n\
  TIPS\n\
  -- Share your Cloud9 url with collaborators on your external IP address\n\

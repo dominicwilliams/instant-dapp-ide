@@ -58,9 +58,7 @@ $ ./run-image.sh
  $ truffle test           # run project's unit tests
  $ truffle build          # build the whole Dapp (inc. html, js...)
  $ truffle migrate        # migrate compiled contracts to e.g. testrpc chain
- $ ctrl-b c               # create window 3...
  $ truffle serve          # serve Dapp for testing on http://localhost:8080
- $ ctrl-b 2               # return window 2
  
  TIPS
  -- Share your Cloud9 url with collaborators on your external IP address
