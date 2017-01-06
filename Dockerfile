@@ -135,7 +135,7 @@ RUN echo 'echo "\n\
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # On entry, start sshd, copy pair programming keys into authorized keys, and run bash
-ENTRYPOINT service ssh start && cp /root/.import/authorized_keys /root/.ssh/ && tmux new -s pair 'testrpc -d 0.0.0.0' \; new-window 'c9.sh' \; new-window 
+# ENTRYPOINT service ssh start && cp /root/.import/authorized_keys /root/.ssh/ && tmux new -s pair 'testrpc -d 0.0.0.0' \; new-window 'c9.sh' \; new-window 
 
 # Start user in their source code directory...
 WORKDIR /src
