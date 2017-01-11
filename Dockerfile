@@ -91,6 +91,11 @@ WORKDIR /tmp
 RUN git clone https://github.com/ConsenSys/truffle.git
 WORKDIR /tmp/truffle
 RUN npm install -g .
+# Mnemonic Seeds
+WORKDIR /tmp
+RUN git clone https://github.com/bitpay/bitcore-mnemonic
+WORKDIR /tmp/bitcore-mnemonic
+RUN npm install -g .
 
 # Create an instructive welcome message
 RUN echo 'figlet Instant Dapp IDE' >> /root/.bashrc
