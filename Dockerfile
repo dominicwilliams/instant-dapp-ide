@@ -83,14 +83,7 @@ WORKDIR /tmp/testrpc
 RUN npm install -g .
 # Truffle
 WORKDIR /tmp
-RUN git clone https://github.com/ConsenSys/truffle-default-builder.git
-RUN df -h
-WORKDIR /tmp/truffle-default-builder
-RUN npm install -g .
-WORKDIR /tmp
-RUN git clone https://github.com/ConsenSys/truffle.git
-WORKDIR /tmp/truffle
-RUN npm install -g .
+RUN npm install -g truffle
 
 # Create an instructive welcome message
 RUN echo 'figlet Instant Dapp IDE' >> /root/.bashrc
