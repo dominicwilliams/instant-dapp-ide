@@ -1,6 +1,6 @@
 # Instant Dapp IDE
 Get up and running with a full professional Dapp development environment in minutes...
-* If you have Docker installed, simply clone the repo, then
+* If you have Docker installed, simply clone the repo, then first build it and run via
 ```
 ./run-image.sh
 ```
