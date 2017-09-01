@@ -16,6 +16,7 @@ RUN apt-get install -y strace
 RUN apt-get install -y curl
 RUN apt-get install -y vim
 RUN apt-get install -y git
+RUN apt-get install -y unzip
 
 RUN curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
 RUN apt-get install -y nodejs
@@ -23,16 +24,15 @@ RUN apt-get install -y python
 RUN apt-get install -y python-pip
 RUN apt-get install -y python-dev
 RUN apt-get install -y libssl-dev
-RUN apt-get install -y rake
 
 # Install tmux to gain split screen management and screen sharing capabilities
 RUN apt-get install -y tmux
 
 # Pimp VIM with Nerd Tree and other goodies using the Braintree setup
 WORKDIR /root
-RUN git clone https://github.com/braintreeps/vim_dotfiles.git
+RUN git clone https://github.com/7flash/vim_dotfiles.git
 WORKDIR /root/vim_dotfiles
-RUN rake
+RUN ./activate.sh
 
 # Add TypeScrupt support too
 RUN echo "Plug 'leafgarland/typescript-vim'" >> /root/.vimrc.bundles.local
